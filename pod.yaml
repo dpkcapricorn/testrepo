@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+   name: nginx-webserver
+   labels:
+      name: webserver
+spec:
+   containers:
+   - name: webserver
+     image: nginx
+     ports:
+     - containerPort: 80
+       name: http
+     volumeMounts:
+     - mountPath: "/usr/local/nginx/html"
+       name: app-data
+   volumes:
+   - name: app-data
+     emptyDir: {}
